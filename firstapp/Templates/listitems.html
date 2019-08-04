@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Items List
+{% endblock %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+<h2>Items List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Item Type</th>
+            <th>Expiry Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.item_type }}</td>
+            <td>{{ item.expiry_date }}</td>
+            <td><a href="/firstapp/additems/edit/{{ item.id }}">Edit</a> | <a href="/firstapp/additems/del/{{ item.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
